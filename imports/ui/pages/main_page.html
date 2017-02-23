@@ -1,0 +1,17 @@
+
+<template name="main_page">
+	{{setTitle "Layout Proof of Concept"}}
+	<h1>Layout Proof of Concept</h1>
+
+	<div class="mdl-grid section_container">
+		{{#let sections=(getPageSections)}}
+			{{#each section in sections}}
+				{{>content_section section=section index=@index page=(getPage)}}
+			{{/each}}
+		{{/let}}
+	</div>
+	
+	<div class="center-div">
+		<button class="add-content-section">Ajouter une section</button>
+	</div>
+</template>

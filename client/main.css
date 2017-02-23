@@ -1,0 +1,31 @@
+/* CSS declarations go here */
+
+body {
+	background: orange;
+}
+
+
+.content_section {
+	background: green;
+}
+
+
+.content_column {
+	background: blue;
+}
+
+.content_block {
+	background: red;
+}
+
+.drag_handle {
+	cursor: move;
+}
+
+.button_icon {
+	cursor: pointer;
+}
+
+.center-div {
+	text-align: center;
+}
