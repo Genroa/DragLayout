@@ -92,6 +92,16 @@ Meteor.methods({
 			page.save();
 		}
 	},
+
+	'delete_content_block' : function(pageId, sectionIndex, columnIndex, index) {
+		let page = Page.findOne({_id: pageId});
+		
+		if(page) {
+			let column = page.layout.sections[sectionIndex].columns[columnIndex];
+			column.blocks.splice(index, 1);
+			page.save();
+		}
+	},
 	
 	"update_sections" : function(pageId, newIndexes) {
 		let page = Page.findOne({_id: pageId});

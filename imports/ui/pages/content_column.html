@@ -3,11 +3,11 @@
 <template name="content_column">
 	<div class="mdl-cell {{buildColumnCSS column}} content_column" data-section-index="{{sectionIndex}}" data-index="{{index}}">
 		<i class="fa fa-arrows content_column_handle drag_handle" aria-hidden="true"></i>
-		<i class="fa fa-trash-o button_icon delete_column" aria-hidden="true" data-index="{{index}}"></i>
+		<i class="fa fa-trash-o button_icon delete_column" aria-hidden="true"></i>
 		
 		<div class="mdl-grid content_container">
 			{{#each block in column.blocks}}
-				{{> content_block block=block sectionIndex=sectionIndex columnIndex=index index=@index}}
+				{{> content_block block=block sectionIndex=sectionIndex columnIndex=index index=@index page=page}}
 			{{/each}}
 
 			<div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone center-div">
