@@ -7,7 +7,7 @@
 		
 		<div class="mdl-grid content_container">
 			{{#each block in column.blocks}}
-				{{> content_block block}}
+				{{> content_block block=block sectionIndex=sectionIndex columnIndex=index index=@index}}
 			{{/each}}
 		</div>
 	</div>

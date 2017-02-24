@@ -105,22 +105,6 @@ Meteor.methods({
 		}
 	},
 
-	"update_columns" : function(pageId, sectionIndex, newIndexes) {
-		let page = Page.findOne({_id: pageId});
-		if(page) {
-			let newColumns = new Array(page.layout.sections[sectionIndex].columns.length);
-			
-			// On réassigne correctement les bouts de l'objet
-			for(let i=0; i<newColumns.length; i++) {
-				newColumns[i] = page.layout.sections[sectionIndex].columns[newIndexes[i]];
-			}
-			
-			// Assign new order
-			page.layout.sections[sectionIndex].columns = newColumns;
-			page.save();
-		}
-	},
-
 	"move_column" : function(pageId, oldSectionIndex, oldIndex, newSectionIndex, newIndex) {
 		let page = Page.findOne({_id: pageId});
 		if(page) {
@@ -128,6 +112,18 @@ Meteor.methods({
 			page.layout.sections[oldSectionIndex].columns.splice(oldIndex, 1);
 
 			page.layout.sections[newSectionIndex].columns.splice(newIndex, 0, column);
+
+			page.save();
+		}
+	},
+
+	"move_block" : function(pageId, oldSectionIndex,oldColumnIndex, oldIndex, newSectionIndex, newColumnIndex, newIndex) {
+		let page = Page.findOne({_id: pageId});
+		if(page) {
+			let block = page.layout.sections[oldSectionIndex].columns[oldColumnIndex].blocks[oldIndex];
+			page.layout.sections[oldSectionIndex].columns[oldColumnIndex].blocks.splice(oldIndex, 1);
+
+			page.layout.sections[newSectionIndex].columns[newColumnIndex].blocks.splice(newIndex, 0, block);
 
 			page.save();
 		}

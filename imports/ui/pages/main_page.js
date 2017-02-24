@@ -45,47 +45,49 @@ Template.main_page.onCreated(function(){
 
 	// Column move event
 	this.data.column_dragula.on("drop", function(el, target, source, sibling) {
-		let columns = target.children;
-		console.log("moved column:");
-		console.log(source.parentElement);
-		console.log(target.parentElement);
-
-		// Now, build a plan of what changed to explain it to the server
-		// Give new indexes position and array length
-		if(source == target) {
-			let newIndexes = new Array(columns.length);
-			let sectionIndex = el.dataset.sectionIndex;
-
-			// On note les nouvelles correspondances index <=> DOM
-			for(let i=0; i<columns.length; i++) {
-				newIndexes[i] = columns[i].dataset.index;
-			}
-
-			Session.set("cachedLayout", $(".section_container").clone().html());
-			Session.set("noRender", true);
-
-			Meteor.call("update_columns", this.data.pageData._id, sectionIndex, newIndexes, function(){
-				Session.set("noRender", false);
-				Session.set("cachedLayout", null);
-			});
-		}
-		// Changement de conteneur : on va devoir retirer quelque chose coté source et ajout coté target
-		else {
-			let oldSectionIndex = el.dataset.sectionIndex;
-			let oldIndex = el.dataset.index;
-			
-			let newSectionIndex = target.parentElement.dataset.index;
-			let newIndex = $(el).index();
+		let oldSectionIndex = el.dataset.sectionIndex;
+		let oldIndex = el.dataset.index;
+		
+		let newSectionIndex = target.parentElement.dataset.index;
+		let newIndex = $(el).index();
 
 			
-			Session.set("cachedLayout", $(".section_container").clone().html());
-			Session.set("noRender", true);
+		Session.set("cachedLayout", $(".section_container").clone().html());
+		Session.set("noRender", true);
 
-			Meteor.call("move_column", this.data.pageData._id, oldSectionIndex, oldIndex, newSectionIndex, newIndex, function(){
+		Meteor.call("move_column", this.data.pageData._id, oldSectionIndex, oldIndex, newSectionIndex, newIndex, function(){
+			Session.set("noRender", false);
+			Session.set("cachedLayout", null);
+		});
+	}.bind(this));
+
+
+	// Content block move event
+	this.data.content_dragula.on("drop", function(el, target, source, sibling) {
+		let oldSectionIndex = el.dataset.sectionIndex;
+		let oldColumnIndex = el.dataset.columnIndex;
+		let oldIndex = el.dataset.index;
+		
+		let newSectionIndex = target.parentElement.dataset.sectionIndex;
+		let newColumnIndex = target.parentElement.dataset.index;
+		let newIndex = $(el).index();
+
+		console.log(target.parentElement.dataset);
+			
+		Session.set("cachedLayout", $(".section_container").clone().html());
+		Session.set("noRender", true);
+
+		Meteor.call("move_block", this.data.pageData._id, 
+									oldSectionIndex, 
+									oldColumnIndex, 
+									oldIndex, 
+									newSectionIndex, 
+									newColumnIndex,
+									newIndex, 
+			function(){
 				Session.set("noRender", false);
 				Session.set("cachedLayout", null);
-			});
-		}
+		});
 
 
 	}.bind(this));

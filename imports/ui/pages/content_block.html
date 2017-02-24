@@ -1,7 +1,7 @@
 
 <template name="content_block">
-	<div class="content_block mdl-cell mdl-cell--12-col-desktop ">
+	<div class="content_block mdl-cell mdl-cell--12-col-desktop " data-section-index="{{sectionIndex}}" data-column-index="{{columnIndex}}" data-index="{{index}}">
 		<i class="fa fa-arrows content_handle drag_handle" aria-hidden="true"></i>
-		<div>Contenu: {{content}}</div>
+		<div>Contenu: {{block.content}}</div>
 	</div>
 </template>
