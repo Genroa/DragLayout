@@ -1,0 +1,14 @@
+
+
+<template name="content_column">
+	<div class="mdl-cell {{buildColumnCSS column}} content_column">
+		<i class="fa fa-arrows content_column_handle drag_handle" aria-hidden="true"></i>
+		<i class="fa fa-trash-o button_icon delete_column" aria-hidden="true" data-index="{{index}}"></i>
+		
+		<div class="mdl-grid content_container">
+			{{#each block in column.blocks}}
+				{{> content_block block}}
+			{{/each}}
+		</div>
+	</div>
+</template>

@@ -29,3 +29,15 @@ body {
 .center-div {
 	text-align: center;
 }
+
+.section_container {
+	min-height: 200px;
+}
+
+.column_container {
+	min-height: 200px;
+}
+
+.content_container {
+	min-height: 200px;
+}

@@ -8,3 +8,11 @@ Template.registerHelper("setTitle", function(title){
 		console.log("setTitle called without title!");
 	}
 });
+
+Template.registerHelper("noRender", function(){
+	return Session.get("noRender");
+});
+
+Template.registerHelper("cachedLayout", function(){
+	return Session.get("cachedLayout");
+});

@@ -1,21 +1,13 @@
 
 
 <template name="content_section">
-	<div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone content_section" >
-		<i class="fa fa-arrows content_section drag_handle" aria-hidden="true"></i>
-		<i class="fa fa-trash-o content_section button_icon delete_section" aria-hidden="true" data-index="{{index}}"></i>
-		
-		<div class="mdl-grid column_container" style="min-height: 150px">	
+	<div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone content_section" data-index="{{index}}">
+		<i class="fa fa-arrows drag_handle" aria-hidden="true"></i>
+		<i class="fa fa-trash-o button_icon delete_section" aria-hidden="true" data-index="{{index}}"></i>
+		Index{{index}}
+		<div class="mdl-grid column_container">	
 			{{#each column in section.columns}}
-				<div class="mdl-cell {{buildColumnCSS column}} content_column">
-					<i class="fa fa-arrows content_column_handle drag_handle" aria-hidden="true"></i>
-					
-					<div class="mdl-grid content_container">
-						{{#each block in column.blocks}}
-							{{> content_block block}}
-						{{/each}}
-					</div>
-				</div>
+				{{>content_column column=column sectionIndex=index index=@index page=page}}
 			{{/each}}
 		</div>
 	</div>

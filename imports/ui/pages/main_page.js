@@ -12,71 +12,37 @@ Template.main_page.helpers({
 	},
 
 	getPage: function() {
+		//console.log(Template.instance().data.pageData);
 		return Template.instance().data.pageData;
 	}
 });
 
 
-Template.main_page.onCreated(function() {
-	var instance = Template.instance();
-	/*instance.data.section_dragula = dragula([].slice.apply(document.querySelectorAll(".section_container")), {
-		moves: function(el, container, handle) {
-			return !handle.classList.contains('content_column_handle')
-			&& !handle.classList.contains('content_handle')
-			&& handle.classList.contains('drag_handle');
+Template.main_page.onCreated(function(){
+	Session.set("noRender", false);
+	Session.set("cachedLayout", null);
+
+	this.data.section_dragula.on("drop", function(el, target, source, sibling) {
+		let sections = target.children;
+		let newIndexes = new Array(sections.length);
+		
+		// On note les nouvelles correspondances index <=> DOM
+		for(let i=0; i<sections.length; i++) {
+			newIndexes[i] = sections[i].dataset.index;
 		}
-	});*/
-	
-	Meteor.setTimeout(function() {
-		this.column_dragula = dragula([].slice.apply(document.querySelectorAll(".column_container")), {
-			moves: function(el, container, handle) {
-				return !handle.classList.contains('content_handle')
-						handle.classList.contains('drag_handle');
-			}
-		});
-		console.log("done");
-	}.bind(instance.data), 1000);
+				
+		console.log(newIndexes);
+		
+		Session.set("cachedLayout", $(".section_container").clone().html());
+		Session.set("noRender", true);
 
-	Meteor.setTimeout(function() {
-		this.content_dragula = dragula([].slice.apply(document.querySelectorAll(".content_container")), {
-			moves: function(el, container, handle) {
-				return handle.classList.contains('drag_handle');
-			}
-		});
-		console.log("done");
-		//console.log(this);
-	}.bind(instance.data), 2000);
-});
-
-Template.main_page.onRendered(function(){
-	var instance = Template.instance();
-	/*instance.data.section_dragula = dragula([].slice.apply(document.querySelectorAll(".section_container")), {
-		moves: function(el, container, handle) {
-			return !handle.classList.contains('content_column_handle')
-			&& !handle.classList.contains('content_handle')
-			&& handle.classList.contains('drag_handle');
+		if(this.data.pageData) {
+			Meteor.call("update_sections", this.data.pageData._id, newIndexes, function(){
+				Session.set("noRender", false);
+				Session.set("cachedLayout", null);
+			});
 		}
-	});*/
-	
-	Meteor.setTimeout(function() {
-		this.column_dragula = dragula([].slice.apply(document.querySelectorAll(".column_container")), {
-			moves: function(el, container, handle) {
-				return !handle.classList.contains('content_handle')
-						handle.classList.contains('drag_handle');
-			}
-		});
-		console.log("done");
-	}.bind(instance.data), 1000);
-
-	Meteor.setTimeout(function() {
-		this.content_dragula = dragula([].slice.apply(document.querySelectorAll(".content_container")), {
-			moves: function(el, container, handle) {
-				return handle.classList.contains('drag_handle');
-			}
-		});
-		console.log("done");
-		//console.log(this);
-	}.bind(instance.data), 2000);
+	}.bind(this));
 });
 
 
