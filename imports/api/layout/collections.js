@@ -103,6 +103,34 @@ Meteor.methods({
 			page.layout.sections = newSections;
 			page.save();
 		}
+	},
+
+	"update_columns" : function(pageId, sectionIndex, newIndexes) {
+		let page = Page.findOne({_id: pageId});
+		if(page) {
+			let newColumns = new Array(page.layout.sections[sectionIndex].columns.length);
+			
+			// On réassigne correctement les bouts de l'objet
+			for(let i=0; i<newColumns.length; i++) {
+				newColumns[i] = page.layout.sections[sectionIndex].columns[newIndexes[i]];
+			}
+			
+			// Assign new order
+			page.layout.sections[sectionIndex].columns = newColumns;
+			page.save();
+		}
+	},
+
+	"move_column" : function(pageId, oldSectionIndex, oldIndex, newSectionIndex, newIndex) {
+		let page = Page.findOne({_id: pageId});
+		if(page) {
+			let column = page.layout.sections[oldSectionIndex].columns[oldIndex];
+			page.layout.sections[oldSectionIndex].columns.splice(oldIndex, 1);
+
+			page.layout.sections[newSectionIndex].columns.splice(newIndex, 0, column);
+
+			page.save();
+		}
 	}
 	
 });
