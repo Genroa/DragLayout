@@ -56,7 +56,7 @@ Meteor.methods({
 	'create_section' : function(pageId) {
 		let page = Page.findOne({_id: pageId});
 		if(page) {
-		
+			
 			let block = new ContentBlock({content: "Bloc de contenu"});
 			let column1 = new ContentColumn({blocks: []});
 			let column2 = new ContentColumn({blocks: [block]});
@@ -73,6 +73,16 @@ Meteor.methods({
 		}
 	},
 	
+	'create_content_block' : function(pageId, sectionIndex, columnIndex) {
+		let page = Page.findOne({_id: pageId});
+		if(page) {
+			let block = new ContentBlock({content: "Bloc de contenu"});
+			
+			page.layout.sections[sectionIndex].columns[columnIndex].blocks.push(block);
+			page.save();
+		}
+	},
+
 	'delete_column' : function(pageId, sectionIndex, columnIndex) {
 		let page = Page.findOne({_id: pageId});
 		

@@ -9,6 +9,10 @@
 			{{#each block in column.blocks}}
 				{{> content_block block=block sectionIndex=sectionIndex columnIndex=index index=@index}}
 			{{/each}}
+
+			<div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone center-div">
+				<button class="add-content-block" data-section-index="{{sectionIndex}}" data-index="{{index}}">Ajouter un bloc de contenu</button>
+			</div>
 		</div>
 	</div>
 </template>

@@ -71,8 +71,7 @@ Template.main_page.onCreated(function(){
 		let newSectionIndex = target.parentElement.dataset.sectionIndex;
 		let newColumnIndex = target.parentElement.dataset.index;
 		let newIndex = $(el).index();
-
-		console.log(target.parentElement.dataset);
+		
 			
 		Session.set("cachedLayout", $(".section_container").clone().html());
 		Session.set("noRender", true);
@@ -99,8 +98,6 @@ Template.main_page.events({
 		evt.preventDefault();
 		var instance = Template.instance();
 		let page = instance.data.pageData;
-		Meteor.call("create_section", page._id, function(){
-
-		});
+		Meteor.call("create_section", page._id, function(){});
 	}
 });
