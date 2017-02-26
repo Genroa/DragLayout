@@ -1,10 +1,11 @@
 
 
 <template name="content_section">
-	<div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone content_section" data-index="{{index}}">
-		<i class="fa fa-arrows drag_handle" aria-hidden="true"></i>
-		<i class="fa fa-trash-o button_icon delete_section" aria-hidden="true"></i>
-		
+	<div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone content_section {{buildAdminCSS}}" data-index="{{index}}">
+		{{#if (isAdmin)}}
+			<i class="fa fa-arrows drag_handle" aria-hidden="true"></i>
+			<i class="fa fa-trash-o button_icon delete_section" aria-hidden="true"></i>
+		{{/if}}
 		<div class="mdl-grid column_container">	
 			{{#each column in section.columns}}
 				{{>content_column column=column sectionIndex=index index=@index page=page}}

@@ -16,3 +16,11 @@ Template.registerHelper("noRender", function(){
 Template.registerHelper("cachedLayout", function(){
 	return Session.get("cachedLayout");
 });
+
+Template.registerHelper("isAdmin", function(){
+	return Session.get("isAdmin");
+});
+
+Template.registerHelper("buildAdminCSS", function(){
+	return Session.get("isAdmin") ? "editing" : "";
+});

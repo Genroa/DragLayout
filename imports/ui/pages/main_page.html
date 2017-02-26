@@ -2,8 +2,25 @@
 <template name="main_page">
 	{{setTitle "Layout Proof of Concept"}}
 	<h1>Layout Proof of Concept</h1>
-
+	
 	<div class="mdl-grid section_container">
+		<div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+			<p>
+				Voici le proof of concept du système de layout pour le système de construction et management facile de sites web vitrine.
+				<br>
+				Il repose sur des règles simples : des sections placées verticalement, constituées d'un nombre défini de colonnes dans lesquelles on peut ajouter, déplacer ou supprimer des contenus.
+				<br>
+				Pour chaque section, le nombre de colonnes visible sur mobile par ligne est paramétrable. Déplacer et ajouter/supprimer des colonnes modifie les propriétés des colonnes (pour les afficher en fonction des paramètres). On peut paramétrer le nombre de colonnes par ligne pour pc, et pour mobile.
+				<br>
+				L'ajout de divers contenus est possible (texte formatté, image, etc.)
+			</p>
+		</div>
+		<div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+			<label for="chkbox1" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+				<input type="checkbox" id="chkbox1" class="mdl-checkbox__input change_admin" checked={{isAdmin}}>
+				<span class="mdl-checkbox__label">is Admin</span>
+			</label>
+		</div>
 		{{#unless noRender}}
 			{{#let sections=(getPageSections) page=(getPage)}}
 				{{#each section in sections}}
@@ -14,8 +31,9 @@
 			{{{cachedLayout}}}
 		{{/unless}}
 	</div>
-	
-	<div class="center-div">
-		<button class="add-content-section">Ajouter une section</button>
-	</div>
+	{{#if (isAdmin)}}
+		<div class="center-div">
+			<button class="add-content-section">Ajouter une section</button>
+		</div>
+	{{/if}}
 </template>

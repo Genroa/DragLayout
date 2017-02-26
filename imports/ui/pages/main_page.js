@@ -21,6 +21,7 @@ Template.main_page.onCreated(function(){
 	Session.set("noRender", false);
 	Session.set("cachedLayout", null);
 
+	Session.set("isAdmin", true);
 
 	// Section move event
 	this.data.section_dragula.on("drop", function(el, target, source, sibling) {
@@ -60,7 +61,7 @@ Template.main_page.onCreated(function(){
 			Session.set("cachedLayout", null);
 		});
 	}.bind(this));
-
+	
 
 	// Content block move event
 	this.data.content_dragula.on("drop", function(el, target, source, sibling) {
@@ -71,7 +72,7 @@ Template.main_page.onCreated(function(){
 		let newSectionIndex = target.parentElement.dataset.sectionIndex;
 		let newColumnIndex = target.parentElement.dataset.index;
 		let newIndex = $(el).index();
-		
+
 			
 		Session.set("cachedLayout", $(".section_container").clone().html());
 		Session.set("noRender", true);
@@ -99,5 +100,9 @@ Template.main_page.events({
 		var instance = Template.instance();
 		let page = instance.data.pageData;
 		Meteor.call("create_section", page._id, function(){});
+	},
+
+	'click .change_admin' : function(evt) {
+		Session.set("isAdmin", !Session.get("isAdmin"));
 	}
 });

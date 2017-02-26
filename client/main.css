@@ -5,16 +5,16 @@ body {
 }
 
 
-.content_section {
+.editing.content_section {
 	background: green;
 }
 
 
-.content_column {
+.editing.content_column {
 	background: blue;
 }
 
-.content_block {
+.editing.content_block {
 	background: red;
 }
 

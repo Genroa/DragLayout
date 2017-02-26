@@ -1,8 +1,10 @@
 
 <template name="content_block">
-	<div class="content_block mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone" data-section-index="{{sectionIndex}}" data-column-index="{{columnIndex}}" data-index="{{index}}">
-		<i class="fa fa-arrows content_handle drag_handle" aria-hidden="true"></i>
-		<i class="fa fa-trash-o button_icon delete_content_block" aria-hidden="true"></i>
-		<div>Contenu: {{block.content}}</div>
+	<div class="content_block mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone  {{buildAdminCSS}}" data-section-index="{{sectionIndex}}" data-column-index="{{columnIndex}}" data-index="{{index}}">
+		{{#if (isAdmin)}}
+			<i class="fa fa-arrows content_handle drag_handle" aria-hidden="true"></i>
+			<i class="fa fa-trash-o button_icon delete_content_block" aria-hidden="true"></i>
+		{{/if}}
+		<div>{{block.content}}</div>
 	</div>
 </template>
