@@ -32,6 +32,16 @@ Meteor.methods({
 		}
 	},
 
+	'create_content_column' : function(pageId, sectionIndex) {
+		let page = Page.findOne({_id: pageId});
+		if(page) {
+			let column = new ContentColumn({blocks: []});
+			
+			page.layout.sections[sectionIndex].columns.push(column);
+			page.save();
+		}
+	},
+
 	'delete_column' : function(pageId, sectionIndex, columnIndex) {
 		let page = Page.findOne({_id: pageId});
 		
@@ -94,6 +104,33 @@ Meteor.methods({
 
 			page.layout.sections[newSectionIndex].columns[newColumnIndex].blocks.splice(newIndex, 0, block);
 
+			page.save();
+		}
+	},
+
+	"change_column_size_desktop": function(pageId, sectionIndex, columnIndex, newSize) {
+		let page = Page.findOne({_id: pageId});
+		if(page) {
+			let column = page.layout.sections[sectionIndex].columns[columnIndex];
+			column.desktopSize = newSize;
+			page.save();
+		}
+	},
+
+	"change_column_size_tablet": function(pageId, sectionIndex, columnIndex, newSize) {
+		let page = Page.findOne({_id: pageId});
+		if(page) {
+			let column = page.layout.sections[sectionIndex].columns[columnIndex];
+			column.tabletSize = newSize;
+			page.save();
+		}
+	},
+
+	"change_column_size_mobile": function(pageId, sectionIndex, columnIndex, newSize) {
+		let page = Page.findOne({_id: pageId});
+		if(page) {
+			let column = page.layout.sections[sectionIndex].columns[columnIndex];
+			column.mobileSize = newSize;
 			page.save();
 		}
 	}

@@ -11,5 +11,11 @@
 				{{>content_column column=column sectionIndex=index index=@index page=page}}
 			{{/each}}
 		</div>
+
+		{{#if (isAdmin)}}
+			<div class="center-div">
+				<button class="add-content-column">Ajouter une colonne</button>
+			</div>
+		{{/if}}
 	</div>
 </template>

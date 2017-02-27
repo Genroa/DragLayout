@@ -1,10 +1,42 @@
 
 
 <template name="content_column">
-	<div class="mdl-cell {{buildColumnCSS column}} content_column  {{buildAdminCSS}}" data-section-index="{{sectionIndex}}" data-index="{{index}}">
+	<div class="mdl-cell {{buildColumnCSS column}} content_column {{buildAdminCSS}}" data-section-index="{{sectionIndex}}" data-index="{{index}}">
 		{{#if (isAdmin)}}
 			<i class="fa fa-arrows content_column_handle drag_handle" aria-hidden="true"></i>
 			<i class="fa fa-trash-o button_icon delete_column" aria-hidden="true"></i>
+			<select class="change_column_size_desktop">
+				<option value="1" {{isSelectedDesktopSize 1}}>1</option>
+				<option value="2" {{isSelectedDesktopSize 2}}>2</option>
+				<option value="3" {{isSelectedDesktopSize 3}}>3</option>
+				<option value="4" {{isSelectedDesktopSize 4}}>4</option>
+				<option value="5" {{isSelectedDesktopSize 5}}>5</option>
+				<option value="6" {{isSelectedDesktopSize 6}}>6</option>
+				<option value="7" {{isSelectedDesktopSize 7}}>7</option>
+				<option value="8" {{isSelectedDesktopSize 8}}>8</option>
+				<option value="9" {{isSelectedDesktopSize 9}}>9</option>
+				<option value="10" {{isSelectedDesktopSize 10}}>10</option>
+				<option value="11" {{isSelectedDesktopSize 11}}>11</option>
+				<option value="12" {{isSelectedDesktopSize 12}}>12</option>
+			</select>
+
+			<select class="change_column_size_tablet">
+				<option value="1" {{isSelectedTabletSize 1}}>1</option>
+				<option value="2" {{isSelectedTabletSize 2}}>2</option>
+				<option value="3" {{isSelectedTabletSize 3}}>3</option>
+				<option value="4" {{isSelectedTabletSize 4}}>4</option>
+				<option value="5" {{isSelectedTabletSize 5}}>5</option>
+				<option value="6" {{isSelectedTabletSize 6}}>6</option>
+				<option value="7" {{isSelectedTabletSize 7}}>7</option>
+				<option value="8" {{isSelectedTabletSize 8}}>8</option>
+			</select>
+
+			<select class="change_column_size_mobile">
+				<option value="1" {{isSelectedMobileSize 1}}>1</option>
+				<option value="2" {{isSelectedMobileSize 2}}>2</option>
+				<option value="3" {{isSelectedMobileSize 3}}>3</option>
+				<option value="4" {{isSelectedMobileSize 4}}>4</option>
+			</select>
 		{{/if}}
 		<div class="mdl-grid content_container">
 			{{#each block in column.blocks}}

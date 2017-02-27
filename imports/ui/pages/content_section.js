@@ -13,6 +13,12 @@ Template.content_section.events({
 		evt.preventDefault();
 		var data = Template.instance().data;
 		Meteor.call("delete_section", data.page._id, data.index, function(){});
+	},
+
+	'click .add-content-column' : function(evt) {
+		evt.preventDefault();
+		var data = Template.instance().data;
+		Meteor.call("create_content_column", data.page._id, data.index, function(){});
 	}
 });
 

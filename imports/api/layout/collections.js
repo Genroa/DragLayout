@@ -23,7 +23,20 @@ ContentColumn = Class.create({
 	name: 'ContentColumn',
 	fields: {
 		blocks: {
-			type: [ContentBlock]
+			type: [ContentBlock],
+			default: function() {return []}
+		},
+		desktopSize: {
+			type: Number,
+			default: function() {return 4}				
+		},
+		tabletSize: {
+			type: Number,
+			default: function() {return 4}				
+		},
+		mobileSize: {
+			type: Number,
+			default: function() {return 4}				
 		}
 	}
 });
