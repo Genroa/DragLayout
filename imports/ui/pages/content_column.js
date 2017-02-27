@@ -9,9 +9,9 @@ Template.content_column.helpers({
 		let sectionIndex = data.sectionIndex;
 		let column = data.page.layout.sections[sectionIndex].columns[data.index];
 
-		return "mdl-cell--"+ column.desktopSize+"-col-desktop "+
+		return column && ("mdl-cell--"+ column.desktopSize+"-col-desktop "+
 			   "mdl-cell--"+ column.tabletSize+"-col-tablet "+
-			   "mdl-cell--"+ column.mobileSize+"-col-phone";
+			   "mdl-cell--"+ column.mobileSize+"-col-phone");
 	},
 
 	isSelectedDesktopSize: function(size) {
