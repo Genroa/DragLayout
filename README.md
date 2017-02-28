@@ -11,6 +11,7 @@ Nebula Builder is a project made to easily build simple websites with content, a
 - using the same drag and drop system, place content in your pages : formatted text, pictures, etc.
 - edit the text directly into the pages, or in a part of the administration panel dedicated to it
 - choose the global template for your website and edit the style of it
+- easily add new types of content and new global templates using the Meteor packages system and the packages made for it
 - by cloning this repository, you can easily keep your own Nebula Builder instance up to date
 
 # WARNING : THIS IS STILL A WORK IN PROJECT, CONSIDER IT AS A DRAFT. DON'T USE IT IN ITS CURRENT STATE.
@@ -27,3 +28,10 @@ That's it! Check that everything is fine by browsing to http://localhost:3000 . 
 ## I've installed it and my server is running. How should I manage my website now?
 
 For more information about the management of a Nebula website, take a look at the [short documentation](https://genroa.github.io/Nebula-Builder/) explaining how to start creating your pages, managing your content, change a global template, etc.
+
+# Roadmap
+- admin panel
+- content management system
+- content types (formatted text, pictures)
+- template system
+- basic user system
