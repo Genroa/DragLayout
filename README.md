@@ -22,6 +22,8 @@ Three easy steps:
 - Then, clone this repository and make sure everything is correctly installed (the current version of Meteor requires you to manually install the babel-runtime npm package, using the command : `meteor npm install --save babel-runtime` in your repository).
 - launch the web server using the command: `meteor` in your repository.
 
-That's it! Check that everything is fine by browsing to http://localhost:3000 .
+That's it! Check that everything is fine by browsing to http://localhost:3000 . The first time might take a while, because Meteor needs to download all the packages Nebula Builder uses.
 
+## I've installed it and my server is running. How should I manage my website now?
 
+For more information about the management of a Nebula website, take a look at the short documentation explaining how to start creating your pages, managing your content, change a global template, etc.
