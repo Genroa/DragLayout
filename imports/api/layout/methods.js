@@ -25,7 +25,10 @@ Meteor.methods({
 	'create_content_block' : function(pageId, sectionIndex, columnIndex) {
 		let page = Page.findOne({_id: pageId});
 		if(page) {
-			let block = new ContentBlock({content: "Bloc de contenu"});
+			let content = new TextContent({text: "Bloc de contenu"});
+			content.save();
+
+			let block = new ContentBlock({content: content._id});
 			
 			page.layout.sections[sectionIndex].columns[columnIndex].blocks.push(block);
 			page.save();
