@@ -19,7 +19,7 @@ Nebula Builder is a project made to easily build simple websites with content, a
 
 Three easy steps:
 - First, install the latest version of Meteor (http://meteor.com).
-- Then, clone this repository and make sure everything is correctly installed (the current version of Meteor requires you to manually install the babel-runtime npm package, using the command : `meteor npm install --save babel-runtime` in your repository).
+- Then, clone this repository and make sure everything is correctly installed
 - launch the web server using the command: `meteor` in your repository.
 
 That's it! Check that everything is fine by browsing to http://localhost:3000 . The first time might take a while, because Meteor needs to download all the packages Nebula Builder uses.
