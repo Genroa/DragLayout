@@ -13,7 +13,7 @@ Nebula Builder is a project made to easily build simple websites with content, a
 - choose the global template for your website and edit the style of it
 - by cloning this repository, you can easily keep your own Nebula Builder instance up to date
 
-# WARNING : THIS IS STILL A WORK IN PROJECT, CONSIDER IT TO BE A DRAFT. DON'T USE IT IN IT'S CURRENT STATE.
+# WARNING : THIS IS STILL A WORK IN PROJECT, CONSIDER IT AS A DRAFT. DON'T USE IT IN ITS CURRENT STATE.
 
 ## Getting started
 
@@ -26,4 +26,4 @@ That's it! Check that everything is fine by browsing to http://localhost:3000 . 
 
 ## I've installed it and my server is running. How should I manage my website now?
 
-For more information about the management of a Nebula website, take a look at the short documentation explaining how to start creating your pages, managing your content, change a global template, etc.
+For more information about the management of a Nebula website, take a look at the [short documentation](https://genroa.github.io/Nebula-Builder/) explaining how to start creating your pages, managing your content, change a global template, etc.
