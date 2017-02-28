@@ -13,7 +13,7 @@ Content = Class.create({
 
 	helpers: {
 		getTemplateName : function(obj) {
-			return null;
+			return "";
 		}
 	}
 });
