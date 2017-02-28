@@ -5,6 +5,6 @@
 			<i class="fa fa-arrows content_handle drag_handle" aria-hidden="true"></i>
 			<i class="fa fa-trash-o button_icon delete_content_block" aria-hidden="true"></i>
 		{{/if}}
-		<div>{{block.content}}</div>
+		<div>{{> Template.dynamic template=(getContentTemplate) data=(getContentContext)}}</div>
 	</div>
 </template>

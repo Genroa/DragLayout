@@ -2,36 +2,7 @@ import { Class } from 'meteor/jagi:astronomy';
 
 
 
-Content = Class.create({
-	name: 'Content',
-	
-	collection: new Mongo.Collection('contents'),
-	
-	fields: {
-		showInContentManagement: Boolean,
-	},
 
-	helpers: {
-		getTemplateName : function(obj) {
-			return "";
-		}
-	}
-});
-
-
-TextContent = Content.inherit({
-	name: "TextContent",
-	
-	fields: {
-		text: String
-	},
-
-	helpers: {
-		getTemplateName : function(obj) {
-			return "";
-		}
-	}
-});
 
 ContentBlock = Class.create({
 	name: 'ContentBlock',

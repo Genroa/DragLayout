@@ -3,11 +3,18 @@ import '../../api/layout/collections.js';
 
 console.log("running fake imports...");
 
-
+Content.remove({});
 Page.remove({});
 
-var block1 = new ContentBlock({content: "Ceci est un bloc de contenu texte"});
-var block2 = new ContentBlock({content: "Ceci est un bloc de contenu texte. Il est même très très long. Trèèèèèès long, non? Je trouve perso. Lorem ipsum...bon d'accord j'arrête."});
+var content1 = new Content();
+content1.save();
+
+var content2 = new TextContent({text: "Ceci est un bloc de contenu texte. Il est même très très long. Trèèèèèès long, non? Je trouve perso. Lorem ipsum...bon d'accord j'arrête.",
+								showInContentManagement: false});
+content2.save();
+
+var block1 = new ContentBlock({content: content1._id});
+var block2 = new ContentBlock({content: content2._id});
 
 var column1 = new ContentColumn({blocks: [block1, block2]});
 var column2 = new ContentColumn({blocks: []});
