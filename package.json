@@ -1,5 +1,5 @@
 {
-  "name": "LayoutPoC",
+  "name": "Nebula Builder",
   "private": true,
   "scripts": {
     "start": "meteor run"

@@ -29,7 +29,7 @@ es5-shim@4.6.15
 fastclick@1.0.13
 fortawesome:fontawesome@4.7.0
 fourseven:scss@3.13.0
-genroa:nb-ct-base@0.0.1
+genroa:nb-ct-base@0.0.2
 genroa:nb-ct-text@0.0.1
 geojson-utils@1.0.10
 hot-code-push@1.0.4
