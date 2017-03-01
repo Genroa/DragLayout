@@ -42,15 +42,14 @@
 			{{#each block in column.blocks}}
 				{{> content_block block=block sectionIndex=sectionIndex columnIndex=index index=@index page=page}}
 			{{/each}}
-
-			{{#if (isAdmin)}}
-				<div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone center-div">
-					<!--<button class="add-content-block" data-section-index="{{sectionIndex}}" data-index="{{index}}">Ajouter un bloc de contenu</button>-->
-					{{#each option in getContentCreationOptions}}
-						<button>{{option.name}}</button>
-					{{/each}}
-				</div>
-			{{/if}}
 		</div>
+		{{#if (isAdmin)}}
+			<div class="center-div">
+				<!--<button class="add-content-block" data-section-index="{{sectionIndex}}" data-index="{{index}}">Ajouter un bloc de contenu</button>-->
+				{{#each option in getContentCreationOptions}}
+					<button>{{option.name}}</button>
+				{{/each}}
+			</div>
+		{{/if}}
 	</div>
 </template>

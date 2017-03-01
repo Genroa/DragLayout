@@ -1,0 +1,15 @@
+<template name="admin_panel">
+	<a href="/">Accueil</a>
+	
+	<p>Panels:</p>
+	<ul>
+		{{#each panel in getAdminPanels}}
+			<li><a href="/admin/{{panel.id}}">{{panel.name}}</a></li>
+		{{/each}}
+	</ul>
+
+	Current Panel: {{currentPanel.name}}
+	<div>
+		{{> Template.dynamic template=currentPanel.template}}
+	</div>
+</template>

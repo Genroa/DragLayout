@@ -1,8 +1,11 @@
 
 import { Meteor } from 'meteor/meteor';
-import { Router, RouteController } from 'meteor/iron:router';
-
+import { Router } from 'meteor/iron:router';
 import '../../api/layout/collections.js';
+
+
+
+
 
 Router.route('/', {
 	name: "main_page",
@@ -12,7 +15,7 @@ Router.route('/', {
 	},
 
 	data: function() {
-		var data = {
+		let data = {
 			pageData: Page.findOne(),
 			section_dragula: dragula({
 				moves: function(el, container, handle) {

@@ -1,6 +1,6 @@
 import { Class } from 'meteor/jagi:astronomy';
 import { ContentTypes, ContentCreationOptions } from 'meteor/genroa:nb-ct-base';
-
+import { AdminPanels } from 'meteor/genroa:nb-admin';
 
 
 
