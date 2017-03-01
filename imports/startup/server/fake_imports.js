@@ -6,11 +6,10 @@ console.log("running fake imports...");
 Content.remove({});
 Page.remove({});
 
-var content1 = new Content();
+var content1 = new Content({showInContentManagement: false});
 content1.save();
 
-var content2 = new TextContent({text: "Ceci est un bloc de contenu texte. Il est même très très long. Trèèèèèès long, non? Je trouve perso. Lorem ipsum...bon d'accord j'arrête.",
-								showInContentManagement: false});
+var content2 = new TextContent({text: "Ceci est un bloc de contenu texte. Il est même très très long. Trèèèèèès long, non? Je trouve perso. Lorem ipsum...bon d'accord j'arrête."});
 content2.save();
 
 var block1 = new ContentBlock({content: content1._id});

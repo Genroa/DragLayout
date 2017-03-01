@@ -8,3 +8,4 @@ import '../../api/layout/collections.js';
 import './pages.js';
 import './routing.js';
 import './global_helpers.js';
+import './admin_panels.js';
