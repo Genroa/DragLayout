@@ -1,5 +1,5 @@
 import { Class } from 'meteor/jagi:astronomy';
-import { ContentTypes } from 'meteor/genroa:nb-ct-base';
+import { ContentTypes, ContentCreationOptions } from 'meteor/genroa:nb-ct-base';
 
 
 
