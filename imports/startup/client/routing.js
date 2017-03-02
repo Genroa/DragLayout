@@ -1,55 +1,41 @@
 
 import { Meteor } from 'meteor/meteor';
 import { Router } from 'meteor/iron:router';
+import { ServerSession } from "meteor/matteodem:server-session";
 import '../../api/layout/collections.js';
 
 
 
-
-
-Router.route('/', {
-	name: "main_page",
-	template: "main_page",
-	subscriptions: function() {
-		return Meteor.subscribe("pages");
+/*********************
+  Defines the pages route. 
+*********************/
+Router.route("/:page_id", {
+	name: "page",
+	action : function() {
+		this.layout(ServerSession.get("currentPageTemplate"));
+		
+		let regions = Object.keys(RenderTargets._targets);
+		
+		for(let i=0; i<regions.length; i++) {
+			this.render(RenderTargets._targets[regions[i]].template, {to: regions[i], data: RenderTargets._targets[regions[i]].getData(this.params.page_id, RenderTargets._targets[regions[i]])});
+		}
 	},
-
-	data: function() {
+	
+	data: function(){
 		let data = {
-			pageData: Page.findOne(),
-			section_dragula: dragula({
-				moves: function(el, container, handle) {
-					return !handle.classList.contains('content_column_handle')
-					&& !handle.classList.contains('content_handle')
-					&& handle.classList.contains('drag_handle');
-				},
-				
-				isContainer: function(el) {
-					return el.classList.contains('section_container');
-				},
-			}),
-
-			column_dragula: dragula({
-				moves: function(el, container, handle) {
-					return !handle.classList.contains('content_handle')
-							&& handle.classList.contains('drag_handle');
-				},
-				
-				isContainer: function(el) {
-					return el.classList.contains('column_container');
-				}
-			}),
-
-			content_dragula: dragula({
-				moves: function(el, container, handle) {
-					return handle.classList.contains('drag_handle');
-				},
-				
-				isContainer: function(el) {
-					return el.classList.contains('content_container');
-				}
-			})
+			currentPage: Page.findOne({id: this.params.page_id})
 		};
+		
 		return data;
-	},
+	}
+});
+
+/*********************
+  Defines the default route (redirecting to the default page). 
+*********************/
+Router.route('/', {
+	name: "default_page",
+	onBeforeAction: function() {
+		this.redirect("/"+ServerSession.get("defaultPage"));
+	}
 });

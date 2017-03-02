@@ -3,30 +3,17 @@
 import './content_block.html';
 
 
-getSafeTemplateName = function(content) {
-	if(!content) return;
-
-	var name = content.getTemplateName();
-	if(Blaze.Template[name] instanceof Blaze.Template) {
-		return name;
-	}
-
-	return "content_template_not_found";
-}
-
 Template.content_block.helpers({
 	"getContentTemplate" : function() {
 		var block = Template.instance().data.block;
 		
-		var content = block && TextContent.findOne({_id: block.content});
-
-		if(content && !window[content.className]) {
-			return "content_template_not_found";
-		}
-
-		content = block && window[content.className].findOne({_id: block.content});
-
-		return content && getSafeTemplateName(content);
+		var content = block && Content.findOne({_id: block.content});
+		if(!content) return;
+		
+		content = getConvertedContent(content);
+		let template = content.getTemplateName();
+		
+		return Blaze.Template[template] instanceof Blaze.Template ? template : "content_template_not_found";
 	},
 
 	'getContentContext' : function() {

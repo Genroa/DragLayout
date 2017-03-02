@@ -1,6 +1,7 @@
 
 
 <template name="content_column">
+	<!-- renders a content column -->
 	<div class="mdl-cell {{buildColumnCSS column}} content_column {{buildAdminCSS}}" data-section-index="{{sectionIndex}}" data-index="{{index}}">
 		{{#if (isAdmin)}}
 			<i class="fa fa-arrows content_column_handle drag_handle" aria-hidden="true"></i>

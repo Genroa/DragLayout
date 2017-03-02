@@ -1,3 +1,9 @@
 <template name="pages_management_template">
-	Gestion des pages
+	<!-- Administration panel to manage pages -->
+	<h3>Gestion des pages</h3>
+	<ul>
+	{{#each page in getPages}}
+		<li>{{page.name}}</li>
+	{{/each}}
+	</ul>
 </template>

@@ -52,6 +52,7 @@ jquery@1.11.10
 launch-screen@1.1.1
 livedata@1.0.18
 logging@1.1.17
+matteodem:server-session@0.4.2
 mdg:validation-error@0.5.1
 meteor@1.6.1
 meteor-base@1.0.4
@@ -64,6 +65,7 @@ modules@0.7.9
 modules-runtime@0.7.9
 mongo@1.1.15
 mongo-id@1.0.6
+mongo-livedata@1.0.12
 npm-mongo@2.2.16_1
 observe-sequence@1.0.15
 ordered-dict@1.0.9

@@ -2,20 +2,22 @@
 
 body {
 	background: orange;
+	width: 85%;
+	margin: auto;
 }
 
 
 .editing.content_section {
-	background: green;
+	border: 3px solid green;
 }
 
 
 .editing.content_column {
-	background: blue;
+	border: 3px solid blue;
 }
 
 .editing.content_block {
-	background: red;
+	border: 3px solid red;
 }
 
 .drag_handle {
@@ -31,13 +33,13 @@ body {
 }
 
 .section_container {
-	min-height: 200px;
+	min-height: 80px;
 }
 
 .column_container {
-	min-height: 200px;
+	min-height: 60px;
 }
 
 .content_container {
-	min-height: 200px;
+	min-height: 50px;
 }

@@ -1,0 +1,27 @@
+
+<template name="page_content_template">
+	<!-- Template rendered in the page_content render target. Renders the page content. -->
+	<h3>{{getPageName}}</h3>
+	<div class="mdl-grid mdl-grid--no-spacing section_container">
+		{{#unless noRender}}
+			<div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+				<label for="chkbox1" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+					<input type="checkbox" id="chkbox1" class="mdl-checkbox__input change_admin" checked={{isAdmin}}>
+					<span class="mdl-checkbox__label">is Admin</span>
+				</label>
+			</div>
+			{{#let sections=(getPageSections) page=(getPage)}}
+				{{#each section in sections}}
+					{{>content_section section=section index=@index page=page}}
+				{{/each}}
+			{{/let}}
+		{{else}}
+			{{{cachedLayout}}}
+		{{/unless}}
+	</div>
+	{{#if (isAdmin)}}
+		<div class="center-div">
+			<button class="add-content-section">Ajouter une section</button>
+		</div>
+	{{/if}}
+</template>
