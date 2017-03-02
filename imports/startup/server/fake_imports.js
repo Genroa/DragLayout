@@ -10,7 +10,7 @@ newPage = function(pageName, pageId) {
 	let content1 = new Content({showInContentManagement: false});
 	content1.save();
 
-	let content2 = new TextContent({text: "Ceci est un bloc de contenu texte. Il est même très très long. Trèèèèèès long, non? Je trouve perso. Lorem ipsum...bon d'accord j'arrête."});
+	let content2 = new TextContent({text: "Ceci est un bloc de contenu texte. Il est même très très long. Trèèèèèès long, non? Je trouve perso. Lorem ipsum...bon d'accord j'arrête.", name: "Texte démo"});
 	content2.save();
 
 	let block1 = new ContentBlock({content: content1._id});
